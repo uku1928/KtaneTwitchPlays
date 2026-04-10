@@ -290,14 +290,14 @@ static class GlobalCommands
 	/// <name>Get Previous Log</name>
 	/// <syntax>log</syntax>
 	/// <summary>Sends a message with the previous log.</summary>
-	[Command(@"(log|analysis)")]
+	[Command(@"(log(file)?|analysis)")]
 	public static void Log() => LogUploader.PostToChat(LogUploader.Instance.previousUrl, "Analysis for the previous bomb: {0}");
 
 	/// <name>Get Log</name>
 	/// <syntax>lognow</syntax>
 	/// <summary>Sends a message with the current log.</summary>
 	/// <restriction>Admin</restriction>
-	[Command("(log|analysis)now", AccessLevel.Admin, AccessLevel.Admin)]
+	[Command("(log(file)?|analysis) *now", AccessLevel.Admin, AccessLevel.Admin)]
 	public static void LogNow(string user, bool isWhisper) => LogUploader.Instance.GetAnalyzerUrl(url => IRCConnection.SendMessage(url, user, !isWhisper));
 
 	/// <name>Toggle Short URLs</name>
